@@ -10,13 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
 import json
-from six.moves.urllib import request
+import os
+from pprint import pprint
 
-from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
-
+from cryptography.x509 import load_pem_x509_certificate
+from six.moves.urllib import request
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,10 +36,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'rest_framework_jwt',
     'django_filters',
     'webpack_loader',
-    'corsheaders'
+    'corsheaders',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -86,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangovuejsproject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -96,7 +96,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -116,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -129,7 +127,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -153,15 +150,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
 }
 
 AUTH0_DOMAIN = 'techiediaries.auth0.com'
 API_IDENTIFIER = 'https://djangovuedemoapi.techiediaries.com'
-
 
 PUBLIC_KEY = None
 JWT_ISSUER = None
@@ -174,7 +170,8 @@ if AUTH0_DOMAIN:
     PUBLIC_KEY = certificate.public_key()
     JWT_ISSUER = 'https://' + AUTH0_DOMAIN + '/'
 
-#def jwt_get_username_from_payload_handler(payload):
+
+# def jwt_get_username_from_payload_handler(payload):
 #    return payload.get('sub').replace('|', '.')
 
 def jwt_get_username_from_payload_handler(payload):
@@ -194,3 +191,5 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     '127.0.0.1:8080'
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
