@@ -1,6 +1,6 @@
 export const AUTH_CONFIG = {
-  clientId: 'TcHzYEyEzpJ0gYtYVyavXXjidRjQ7Yqw',
-  domain: 'techiediaries.auth0.com',
+  clientId: 'lX0aeuf6h077bThrkV8ZzNXBdHx273Ll',
+  domain: 'signup.eu.auth0.com',
   callbackUrl: 'http://localhost:8000/callback',
-  apiUrl: 'https://djangovuedemo.techiediaries.com'
+  apiUrl: 'https://signup.eu.auth0.com/api/v2/'
 }
