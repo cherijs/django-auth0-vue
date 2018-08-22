@@ -156,8 +156,8 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTH0_DOMAIN = 'signup.eu.auth0.com'
-API_IDENTIFIER = 'https://signup.eu.auth0.com/userinfo'
+AUTH0_DOMAIN = 'techiediaries.auth0.com'
+API_IDENTIFIER = 'https://djangovuedemo.techiediaries.com'
 
 PUBLIC_KEY = None
 JWT_ISSUER = None
